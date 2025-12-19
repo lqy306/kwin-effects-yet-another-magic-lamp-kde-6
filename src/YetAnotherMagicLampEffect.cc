@@ -45,7 +45,7 @@ YetAnotherMagicLampEffect::YetAnotherMagicLampEffect()
         this, &YetAnotherMagicLampEffect::slotWindowMinimized);
     connect(KWin::effects, &KWin::EffectsHandler::windowUnminimized,
         this, &YetAnotherMagicLampEffect::slotWindowUnminimized);
-    connect(KWin::effects, &KWin::EffectsHandler::windowDeleted,
+    connect(KWin::effects, &KWin::EffectsHandler::windowClosed,  // Changed from windowDeleted to windowClosed in newer versions
         this, &YetAnotherMagicLampEffect::slotWindowDeleted);
     connect(KWin::effects, &KWin::EffectsHandler::activeFullScreenEffectChanged,
         this, &YetAnotherMagicLampEffect::slotActiveFullScreenEffectChanged);
@@ -128,7 +128,7 @@ void YetAnotherMagicLampEffect::prePaintScreen(KWin::ScreenPrePaintData& data, s
         data.model.advance(presentTime);
     }
 
-    data.mask |= PAINT_SCREEN_WITH_TRANSFORMED_WINDOWS;
+    data.mask |= KWin::PAINT_SCREEN_WITH_TRANSFORMED_WINDOWS;  // Updated for KWin 6
 
     KWin::effects->prePaintScreen(data, presentTime);
 }
@@ -207,7 +207,7 @@ void YetAnotherMagicLampEffect::slotWindowMinimized(KWin::EffectWindow* w)
     data.model.setWindow(w);
     data.model.setParameters(m_modelParameters);
     data.model.start(Model::AnimationKind::Minimize);
-    data.visibleRef = KWin::EffectWindowVisibleRef(w, KWin::EffectWindow::PAINT_DISABLED_BY_MINIMIZE);
+    data.visibleRef = KWin::EffectWindowVisibleGuard(w, KWin::EffectWindow::PAINT_DISABLED_BY_MINIMIZE);  // Updated for KWin 6
 
     redirect(w);
 

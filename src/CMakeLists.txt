@@ -13,14 +13,14 @@ kconfig_add_kcfg_files(effect_SRCS
 add_library(kwin4_effect_yetanothermagiclamp SHARED ${effect_SRCS})
 
 target_link_libraries(kwin4_effect_yetanothermagiclamp
-    Qt5::Core
-    Qt5::Gui
-    KF5::ConfigCore
-    KF5::ConfigGui
-    KF5::CoreAddons
-    KF5::WindowSystem
-    kwineffects::kwineffects
-    kwineffects::kwinglutils
+    Qt6::Core
+    Qt6::Gui
+    KF6::ConfigCore
+    KF6::ConfigGui
+    KF6::CoreAddons
+    KF6::WindowSystem
+    KWinEffects::kwin_effects
+    KWinEffects::kwin_opengl
     epoxy::epoxy
 )
 
