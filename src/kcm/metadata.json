@@ -7,5 +7,6 @@
     },
     "X-KDE-ParentComponents": [
         "kwin4_effect_yetanothermagiclamp"
-    ]
+    ],
+    "X-KPackage-Dependencies": []
 }

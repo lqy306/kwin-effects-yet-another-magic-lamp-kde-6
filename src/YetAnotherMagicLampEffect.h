@@ -22,11 +22,11 @@
 #include "common.h"
 
 // kwineffects
-#include <kwinoffscreeneffect.h>
+#include <KWinEffects/OffscreenEffect.h>
 
 struct AnimationData {
     Model model;
-    KWin::EffectWindowVisibleRef visibleRef;
+    KWin::EffectWindowVisibleGuard visibleRef;  // Updated for KWin 6
 };
 
 class YetAnotherMagicLampEffect : public KWin::OffscreenEffect {

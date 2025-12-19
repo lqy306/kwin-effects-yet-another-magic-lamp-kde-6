@@ -17,8 +17,6 @@
             "KWin/Effect"
         ]
     },
-    "org.kde.kwin.effect": {
-        "exclusiveGroup": "minimize"
-    },
-    "X-KDE-ConfigModule": "kwin_yetanothermagiclamp_config"
+    "X-KDE-ConfigModule": "kwin_yetanothermagiclamp_config",
+    "X-KPackage-Dependencies": []
 }
